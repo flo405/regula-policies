@@ -1,0 +1,28 @@
+
+- Gitops: Deklarierter State muss laufen. Schützt nur indirekt (Prozess, Peer-Review) vor Fehlkonfigurationen.
+
+- Gitops + Policy as Code = Trusted Delivery: Welche Konfigurationen sind erlaubt.
+
+- Security Guardrails für IaC
+
+- Built-in rules nicht ausreichend (zB kein Exoscale, nicht auf Netzwerk Architektur abgestimmt)
+
+- Custom Rules mächtig, aber Business Model dahinter kein SaaS sondern Consulting
+
+- Open Source wichtig (läuft lokal, OPA ist Standard)
+
+- Policy as Code erweitert Funktionalität von kleinen Cloud Providern wie Exoscale
+
+
+
+
+regula run --no-built-ins --include /Users/flo/Code/terraform/exoscale/policies .
+
+regula run -f json --no-built-ins --include /Users/flo/Code/terraform/exoscale/policies .
+
+
+checkov -d . --external-checks-dir /Users/flo/Code/terraform/exoscale/checkov
+
+checkov -d . --skip-download --external-checks-dir /Users/flo/Code/terraform/exoscale/checkov
+
+
