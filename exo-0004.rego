@@ -1,9 +1,9 @@
-package rules.sg_private_ingress_only
+package rules.sg_22_jump_host
 
 __rego__metadoc__ := {
   "id": "EXO-0004",
-  "title": "Security group rules must only allow traffic from private networks or Cloudflare",
-  "description": "Security group rules must only allow ingress traffic from IP addresses within 10.0.0.0/8 on all ports or Cloudflare's public IPs only on port 443.",
+  "title": "Security group rules must allow traffic to port 22 only from jump host",
+  "description": "Security group rules must only allow ingress traffic to port 22 from 10.0.1.10/32",
   "custom": {
     "controls": {
       "CORPORATE-POLICY": [
@@ -16,14 +16,14 @@ __rego__metadoc__ := {
 
 resource_type = "exoscale_security_group_rule"
 
-default allow = false
+default allow = true
 
-allow {
-  lower(input.type) == "egress"
-}
-
-allow {
+deny {
   lower(input.type) == "ingress"
-  startswith(input.cidr, "10.") == true
+  input.start_port == 22
+  input.end_port == 22
+  input.cidr != "10.0.1.10/32"
 }
+
+
 

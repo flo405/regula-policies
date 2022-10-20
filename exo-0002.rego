@@ -1,7 +1,7 @@
 package rules.sg_no_port_ranges
 
 __rego__metadoc__ := {
-  "id": "EXO-0003",
+  "id": "EXO-0002",
   "title": "A single security group rule must not cover more than one port",
   "description": "Following the security group rules must be as granular as possible.",
   "custom": {

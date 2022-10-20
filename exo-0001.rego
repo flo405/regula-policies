@@ -10,7 +10,7 @@ __rego__metadoc__ := {
         "CLOUD_SECURITY_POLICY_1.1"
       ]
     },
-    "severity": "High"
+    "severity": "Critical"
   }
 }
 
