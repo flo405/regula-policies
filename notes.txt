@@ -1,5 +1,6 @@
+- Cloud Incidents laut Gartner zu 95% unbeabsichtigte Fehlkonfigurationen 
 
-- Gitops: Deklarierter State muss laufen. Schützt nur indirekt (Prozess, Peer-Review) vor Fehlkonfigurationen.
+- Gitops: Deklarierter State == Run State. Schützt nur indirekt (Prozess, Peer-Review) vor Fehlkonfigurationen.
 
 - Gitops + Policy as Code = Trusted Delivery: Welche Konfigurationen sind (nicht) erlaubt?
 
@@ -22,9 +23,16 @@
 	https://open-policy-agent.github.io/gatekeeper/website/docs/
 	https://open-policy-agent.github.io/gatekeeper-library/website/pspintro
 
-regula run --no-built-ins --include /Users/flo/Code/terraform/exoscale/policies .
+regula run --no-built-ins --include policies .
 
 regula run -f json --no-built-ins --include /Users/flo/Code/terraform/exoscale/policies . | jq
+
+git commit -am "update security group rules"
+
+
+
+
+
 
 checkov -d . --external-checks-dir /Users/flo/Code/terraform/exoscale/checkov
 

@@ -26,3 +26,4 @@ allow {
   lower(input.type) == "ingress"
   input.cidr != "0.0.0.0/0"
 }
+ 
